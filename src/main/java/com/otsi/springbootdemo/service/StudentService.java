@@ -3,5 +3,7 @@ package com.otsi.springbootdemo.service;
 import com.otsi.springbootdemo.bo.Student;
 
 public interface StudentService {
-	public long save(Student student);
+	public Student save(Student student);
+
+	public Student findById(Long id);
 }

@@ -2,6 +2,11 @@ package com.otsi.springbootdemo.exception;
 
 import java.net.URI;
 
+/**
+ * @author praveen.hemadri
+ *
+ * @link https://www.programcreek.com/java-api-examples/?code=torgcrm%2FTorgCRM-Server%2FTorgCRM-Server-master%2Fsrc%2Fmain%2Fjava%2Fcom%2Fidurdyev%2Ftorgcrm%2Fjhipster%2Fweb%2Frest%2Ferrors%2FErrorConstants.java#
+ */
 public final class ErrorConstants {
 
 	public static final String ERR_CONCURRENCY_FAILURE = "error.concurrencyFailure";

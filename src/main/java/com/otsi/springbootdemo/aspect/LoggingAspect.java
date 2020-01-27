@@ -4,9 +4,11 @@ import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +18,10 @@ import org.springframework.stereotype.Component;
  * Aspect for logging execution of service and repository Spring components.
  * 
  * @author praveen.hemadri
- *
+ * 
+ * @link https://www.javaguides.net/2019/05/spring-boot-spring-aop-logging-example-tutorial.html
+ * 
+ * @link https://howtodoinjava.com/spring-aop/aspectj-after-annotation-example/ 
  */
 @Aspect
 @Component
@@ -38,8 +43,7 @@ public class LoggingAspect {
 	/**
 	 * Pointcut that matches all Spring beans in the application's main packages.
 	 */
-	@Pointcut("within(com.otsi.springbootdemo..*)"
-			+ " || within(com.otsi.springbootdemo.service..*)"
+	@Pointcut("within(com.otsi.springbootdemo..*)" + " || within(com.otsi.springbootdemo.service..*)"
 			+ " || within(com.otsi.springbootdemo.controller..*)")
 	public void applicationPackagePointcut() {
 		// Method is empty as this is just a Pointcut, the implementations are in the
@@ -65,6 +69,7 @@ public class LoggingAspect {
 	 * @return result
 	 * @throws Throwable throws IllegalArgumentException
 	 */
+
 	@Around("applicationPackagePointcut() && springBeanPointcut()")
 	public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
 		if (log.isDebugEnabled()) {
@@ -84,4 +89,15 @@ public class LoggingAspect {
 			throw e;
 		}
 	}
+
+	@Before("execution(* com.otsi.springbootdemo.service.impl..*(..))")
+	public void logBeforeAllMethods(JoinPoint joinPoint) {
+		System.out.println("****LoggingAspect.logBeforeAllMethods() : " + joinPoint.getSignature().getName());
+	}
+
+	@After("execution(* com.otsi.springbootdemo.service.impl..*(..))")
+	public void logAfterAllMethods(JoinPoint joinPoint) {
+		System.out.println("****LoggingAspect.logAfterAllMethods() : " + joinPoint.getSignature().getName());
+	}
+
 }

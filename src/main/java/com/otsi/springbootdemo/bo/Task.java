@@ -1,5 +1,10 @@
 package com.otsi.springbootdemo.bo;
 
+/**
+ * @author praveen.hemadri
+ *
+ * @link https://www.baeldung.com/problem-spring-web
+ */
 public class Task {
 	private long id;
 

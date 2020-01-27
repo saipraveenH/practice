@@ -15,7 +15,7 @@ import com.otsi.springbootdemo.service.StudentService;
 
 @Controller
 @RequestMapping("/student")
-public class StudnetContorller {
+public class StudentContorller {
 	@Autowired
 	private StudentService studentService;
 

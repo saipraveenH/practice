@@ -23,6 +23,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.otsi.springbootdemo.util.HeaderUtil;
 
+/**
+ * @author praveen.hemadri
+ *
+ * https://www.programcreek.com/java-api-examples/?code=torgcrm%2FTorgCRM-Server%2FTorgCRM-Server-master%2Fsrc%2Fmain%2Fjava%2Fcom%2Fidurdyev%2Ftorgcrm%2Fjhipster%2Fweb%2Frest%2Ferrors%2FExceptionTranslator.java#
+ */
 @ControllerAdvice
 public class ExceptionTranslator implements ProblemHandling {
 	@Override
